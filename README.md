@@ -22,13 +22,20 @@ Die folgenden Python-Module werden in diesem Projekt verwendet und für die folg
 
 - Laden von Daten aus Excel- oder CSV-Dateien zur Masseneingabe von Gehaltsinformationen. (implementiert, aber funktioniert noch nicht)
 
-## Voraussetzungen
-
-Stellen Sie sicher, dass Python und pip auf Ihrem System installiert sind.
 
 ## Installation
 
-1. Klonen Sie das Repository:
 
    ```bash
-   git clone https://github.com/dein-benutzername/gehaltsverwaltung.git
+   git clone https://github.com/xenoplayed/python-streamlit-example
+   cd python-streamlit-example
+   pip install -r requirements.txt
+```
+
+Führen Sie die folgenden Befehle aus, um die Streamlit-Anwendung zu starten:
+
+```bash
+streamlit run app.py
+```
+
+
