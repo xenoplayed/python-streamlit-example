@@ -48,16 +48,25 @@ if data:
     st.write("Eingegebene Daten:")
     st.dataframe(df)
 
-    # Tabelle für aggregierte Statistiken anzeigen
-    st.write("Aggregierte Statistiken:")
-    statistics = {
-        'Summe Bruttogehälter': df['Bruttogehalt'].str.replace('€', '').str.replace(',', '').astype(float).sum(),
-        'Median Bruttogehalt': df['Bruttogehalt'].str.replace('€', '').str.replace(',', '').astype(float).median(),
-        'Median Nettogehalt': df['Nettogehalt'].str.replace('€', '').str.replace(',', '').astype(float).median(),
-        'Durchschnittsalter': df['Alter'].mean()
-    }
-    statistics_df = pd.DataFrame(statistics, index=[0])
-    st.dataframe(statistics_df)
+    # Aggregierte Statistiken
+    if st.button("Statistiken anzeigen"):
+        st.header("Gehälter Statistiken")
+        salary_statistics = {
+            'Summe Bruttogehälter': df['Bruttogehalt'].str.replace('€', '').str.replace(',', '').astype(float).sum(),
+            'Median Bruttogehalt': df['Bruttogehalt'].str.replace('€', '').str.replace(',', '').astype(float).median(),
+            'Median Nettogehalt': df['Nettogehalt'].str.replace('€', '').str.replace(',', '').astype(float).median()
+        }
+        salary_statistics_df = pd.DataFrame(salary_statistics, index=[0])
+        st.dataframe(salary_statistics_df.style.format(formatter={'Summe Bruttogehälter': '{:.2f} EUR', 
+                                                                 'Median Bruttogehalt': '{:.2f} EUR', 
+                                                                 'Median Nettogehalt': '{:.2f} EUR'}))
+
+        st.header("Personal Statistiken")
+        personal_statistics = {
+            'Durchschnittsalter': df['Alter'].mean()
+        }
+        personal_statistics_df = pd.DataFrame(personal_statistics, index=[0])
+        st.dataframe(personal_statistics_df)
 
 else:
     st.write("Noch keine Daten eingegeben.")
